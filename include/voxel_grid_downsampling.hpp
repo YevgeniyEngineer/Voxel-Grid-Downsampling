@@ -29,11 +29,11 @@ constexpr auto HASH_METHOD = HashMethod::WANG;
 
 struct Hash
 {
-    std::size_t simpleHash(const VoxelKey &key) const;
-    std::size_t wangHash(const VoxelKey &key) const;
-    std::size_t murmurHash3(const VoxelKey &key) const;
-    std::size_t fnv1aHash(const VoxelKey &key) const;
-    std::size_t operator()(const VoxelKey &key) const;
+    inline std::size_t simpleHash(const VoxelKey &key) const;
+    inline std::size_t wangHash(const VoxelKey &key) const;
+    inline std::size_t murmurHash3(const VoxelKey &key) const;
+    inline std::size_t fnv1aHash(const VoxelKey &key) const;
+    inline std::size_t operator()(const VoxelKey &key) const;
 };
 
 class VoxelGridDownsampling

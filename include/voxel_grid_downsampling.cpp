@@ -12,7 +12,7 @@ inline bool VoxelKey::operator==(const VoxelKey &other) const
     return (x == other.x) && (y == other.y) && (z == other.z);
 }
 
-std::size_t Hash::wangHash(const VoxelKey &key) const
+inline std::size_t Hash::wangHash(const VoxelKey &key) const
 {
     auto wangMix = [](std::size_t &h) {
         h = (h ^ 61) ^ (h >> 16);
@@ -32,7 +32,7 @@ std::size_t Hash::wangHash(const VoxelKey &key) const
     return h;
 }
 
-std::size_t Hash::murmurHash3(const VoxelKey &key) const
+inline std::size_t Hash::murmurHash3(const VoxelKey &key) const
 {
     auto murmur3Finalizer = [](std::uint32_t h) {
         h ^= h >> 16;
@@ -59,7 +59,7 @@ std::size_t Hash::murmurHash3(const VoxelKey &key) const
     return murmur3Finalizer(h);
 }
 
-std::size_t Hash::fnv1aHash(const VoxelKey &key) const
+inline std::size_t Hash::fnv1aHash(const VoxelKey &key) const
 {
     constexpr std::size_t FNV_OFFSET_BASIS = 0xcbf29ce484222325;
     constexpr std::size_t FNV_PRIME = 0x100000001b3;
@@ -72,7 +72,7 @@ std::size_t Hash::fnv1aHash(const VoxelKey &key) const
     return h;
 }
 
-std::size_t Hash::simpleHash(const VoxelKey &key) const
+inline std::size_t Hash::simpleHash(const VoxelKey &key) const
 {
     std::size_t hx = std::hash<decltype(key.x)>{}(key.x);
     std::size_t hy = std::hash<decltype(key.y)>{}(key.y);
