@@ -1,10 +1,9 @@
 #include "voxel_grid_downsampling.hpp"
+#include "xxhash.h"
 
 #include <cmath>
 #include <unordered_map>
 #include <utility>
-
-#include "xxhash.h"
 
 namespace downsampling
 {
@@ -25,6 +24,10 @@ VoxelGridDownsampling::VoxelGridDownsampling(float leaf_size) : leaf_size_(leaf_
 std::vector<Point> VoxelGridDownsampling::downsample(const std::vector<Point> &input_cloud)
 {
     std::unordered_map<VoxelKey, std::pair<Point, size_t>, Hash> voxel_map;
+
+    // Reserve memory for the voxel_map to minimize rehashing
+    voxel_map.reserve(input_cloud.size());
+
     for (const auto &point : input_cloud)
     {
         VoxelKey key{static_cast<std::int32_t>(std::floor(point.x * inv_leaf_size_)),
