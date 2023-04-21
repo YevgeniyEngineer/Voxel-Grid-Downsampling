@@ -100,6 +100,6 @@ if(ADD_PYTHON_BINDING)
     )
     install(TARGETS ${PYBIND_BINDING_NAME}
         LIBRARY DESTINATION lib
-        FILES voxel_grid_downsampling_binding.pyi DESTINATION lib
     )
+    install(FILES voxel_grid_downsampling_binding.pyi DESTINATION lib)
 endif()

@@ -1,6 +1,9 @@
 import random
 import sys
 import time
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
 
 sys.path.append("./build")
 
@@ -31,3 +34,49 @@ t2 = time.perf_counter()
 print("Original number of points: ", len(input_cloud))
 print("Number of points after down sampling: ", len(output_cloud))
 print("Elapsed time (s): ", (t2 - t1))
+
+# Plot clouds
+input_cloud_list = []
+for point in input_cloud:
+    input_cloud_list.append((point.x, point.y, point.z))
+
+output_cloud_list = []
+for point in output_cloud:
+    output_cloud_list.append((point.x, point.y, point.z))
+
+input_cloud_list = np.asarray(input_cloud_list)
+output_cloud_list = np.asarray(output_cloud_list)
+
+# Create a new figure
+fig = plt.figure()
+
+# Create the first subplot
+ax1 = fig.add_subplot(121, projection="3d")
+ax1.scatter(
+    input_cloud_list[:, 0],
+    input_cloud_list[:, 1],
+    input_cloud_list[:, 2],
+    c="r",
+    marker="o",
+)
+ax1.set_title("Point Cloud")
+ax1.set_xlabel("X")
+ax1.set_ylabel("Y")
+ax1.set_zlabel("Z")
+
+# Create the second subplot
+ax2 = fig.add_subplot(122, projection="3d")
+ax2.scatter(
+    output_cloud_list[:, 0],
+    output_cloud_list[:, 1],
+    output_cloud_list[:, 2],
+    c="b",
+    marker="^",
+)
+ax2.set_title("Downsampled Point Cloud")
+ax2.set_xlabel("X")
+ax2.set_ylabel("Y")
+ax2.set_zlabel("Z")
+
+# Show the plot
+plt.show()

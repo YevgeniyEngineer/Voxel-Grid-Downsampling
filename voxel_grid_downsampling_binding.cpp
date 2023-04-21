@@ -16,6 +16,9 @@ PYBIND11_MODULE(voxel_grid_downsampling_binding, m)
     py::class_<Point>(m, "Point")
         .def(py::init<>())
         .def(py::init<float, float, float>())
+        .def_readwrite("x", &Point::x)
+        .def_readwrite("y", &Point::y)
+        .def_readwrite("z", &Point::z)
         .def("__str__",
              [](const Point &self) -> std::string {
                  std::stringstream ss;
