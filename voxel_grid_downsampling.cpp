@@ -20,18 +20,21 @@ inline std::size_t Hash::operator()(const VoxelKey &key) const
 
 VoxelGridDownsampling::VoxelGridDownsampling(float leaf_size_x, float leaf_size_y, float leaf_size_z)
 {
-    if (leaf_size_x < 1e-6)
+    constexpr float LEAF_SIZE_THRESHOLD = 1e-6;
+
+    if (leaf_size_x < LEAF_SIZE_THRESHOLD)
     {
-        throw std::runtime_error("leaf size x less than minimum threshold!");
+        throw std::runtime_error("leaf size x less than minimum threshold of " + std::to_string(LEAF_SIZE_THRESHOLD));
     }
-    if (leaf_size_y < 1e-6)
+    if (leaf_size_y < LEAF_SIZE_THRESHOLD)
     {
-        throw std::runtime_error("leaf size y less than minimum threshold!");
+        throw std::runtime_error("leaf size y less than minimum threshold of " + std::to_string(LEAF_SIZE_THRESHOLD));
     }
-    if (leaf_size_z < 1e-6)
+    if (leaf_size_z < LEAF_SIZE_THRESHOLD)
     {
-        throw std::runtime_error("leaf size z less than minimum threshold!");
+        throw std::runtime_error("leaf size z less than minimum threshold of " + std::to_string(LEAF_SIZE_THRESHOLD));
     }
+
     inv_leaf_size_x_ = 1.f / leaf_size_x;
     inv_leaf_size_y_ = 1.f / leaf_size_y;
     inv_leaf_size_z_ = 1.f / leaf_size_z;
