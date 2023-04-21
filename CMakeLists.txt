@@ -98,8 +98,8 @@ if(ADD_PYTHON_BINDING)
         CXX_STANDARD_REQUIRED ON
         CXX_EXTENSIONS OFF
     )
-    install(FILES voxel_grid_downsampling_binding.pyi DESTINATION "${INSTALL_INCLUDE_DIR}/${PYBIND_BINDING_NAME}")
     install(TARGETS ${PYBIND_BINDING_NAME}
         LIBRARY DESTINATION lib
+        FILES voxel_grid_downsampling_binding.pyi DESTINATION lib
     )
 endif()
