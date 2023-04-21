@@ -1,7 +1,7 @@
 # Voxel-Grid-Downsampling
 Point cloud down-sampling based on Voxel Grid
 
-![image1](https://github.com/YevgeniyEngineer/Voxel-Grid-Downsampling/blob/main/images/result.png)
+![image](https://github.com/YevgeniyEngineer/Voxel-Grid-Downsampling/blob/main/images/example_result.png)
 
 ## Optional Dependencies
 If `ADD_PYTHON_BINDING` is set to `TRUE` in `CMakeLists.txt`, then the build will generate Python Binding.
