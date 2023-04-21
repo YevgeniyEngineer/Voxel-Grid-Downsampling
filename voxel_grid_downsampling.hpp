@@ -2,6 +2,7 @@
 #define VOXEL_GRID_DOWNSAMPLING_HPP
 
 #include <cstdint>
+#include <cstdlib>
 #include <vector>
 
 namespace downsampling
@@ -22,10 +23,10 @@ struct Hash
     inline std::size_t operator()(const VoxelKey &key) const;
 };
 
-class VoxelGridDownsampling
+class VoxelGridDownSampler
 {
   public:
-    explicit VoxelGridDownsampling(float leaf_size_x, float leaf_size_y, float leaf_size_z);
+    explicit VoxelGridDownSampler(float leaf_size_x, float leaf_size_y, float leaf_size_z);
     std::vector<Point> downsample(const std::vector<Point> &input_cloud, bool apply_averaging = false);
 
   private:
@@ -33,7 +34,6 @@ class VoxelGridDownsampling
     float inv_leaf_size_y_;
     float inv_leaf_size_z_;
 };
-
 } // namespace downsampling
 
 #endif // VOXEL_GRID_DOWNSAMPLING_HPP

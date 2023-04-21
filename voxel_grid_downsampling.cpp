@@ -18,7 +18,7 @@ inline std::size_t Hash::operator()(const VoxelKey &key) const
     return XXH64(static_cast<const void *>(&key), sizeof(VoxelKey), 0 /* seed */);
 }
 
-VoxelGridDownsampling::VoxelGridDownsampling(float leaf_size_x, float leaf_size_y, float leaf_size_z)
+VoxelGridDownSampler::VoxelGridDownSampler(float leaf_size_x, float leaf_size_y, float leaf_size_z)
 {
     constexpr float LEAF_SIZE_THRESHOLD = 1e-6;
 
@@ -40,7 +40,7 @@ VoxelGridDownsampling::VoxelGridDownsampling(float leaf_size_x, float leaf_size_
     inv_leaf_size_z_ = 1.f / leaf_size_z;
 }
 
-std::vector<Point> VoxelGridDownsampling::downsample(const std::vector<Point> &input_cloud, bool apply_averaging)
+std::vector<Point> VoxelGridDownSampler::downsample(const std::vector<Point> &input_cloud, bool apply_averaging)
 {
     std::vector<Point> downsampled_cloud;
 

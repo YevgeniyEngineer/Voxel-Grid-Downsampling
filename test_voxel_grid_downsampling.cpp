@@ -34,7 +34,7 @@ int main()
     float leaf_size_y = 10.0f;
     float leaf_size_z = 10.0f;
 
-    VoxelGridDownsampling downsampler(leaf_size_x, leaf_size_y, leaf_size_z);
+    VoxelGridDownSampler downsampler(leaf_size_x, leaf_size_y, leaf_size_z);
     bool apply_averaging = false;
 
     auto t1 = std::chrono::steady_clock::now();
