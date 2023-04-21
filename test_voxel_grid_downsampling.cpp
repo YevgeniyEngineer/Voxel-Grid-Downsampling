@@ -30,20 +30,20 @@ int main()
     // Test data
     const auto input_cloud = generateRandomPoints(100'000, -100.0f, 100.0f);
 
-    float leaf_size = 10.0f;
-    VoxelGridDownsampling downsampler(leaf_size);
+    float leaf_size_x = 10.0f;
+    float leaf_size_y = 10.0f;
+    float leaf_size_z = 10.0f;
+
+    VoxelGridDownsampling downsampler(leaf_size_x, leaf_size_y, leaf_size_z);
+    bool apply_averaging = false;
 
     auto t1 = std::chrono::steady_clock::now();
-    std::vector<Point> downsampled_cloud = downsampler.downsample(input_cloud);
+    std::vector<Point> downsampled_cloud = downsampler.downsample(input_cloud, apply_averaging);
     auto t2 = std::chrono::steady_clock::now();
 
-    // for (const auto &point : downsampled_cloud)
-    // {
-    //     std::cout << "Point: (" << point.x << ", " << point.y << ", " << point.z << ")\n";
-    // }
-
-    std::cout << "Number of downsampled points: " << downsampled_cloud.size() << std::endl;
-    std::cout << "Downsampling time (s): " << (t2 - t1).count() / 1e9 << std::endl;
+    std::cout << "Number of points before down sampling: " << input_cloud.size() << std::endl;
+    std::cout << "Number of down sampled points: " << downsampled_cloud.size() << std::endl;
+    std::cout << "Down sampling time (s): " << (t2 - t1).count() / 1e9 << std::endl;
 
     return 0;
 }

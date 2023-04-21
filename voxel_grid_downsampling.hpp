@@ -25,12 +25,13 @@ struct Hash
 class VoxelGridDownsampling
 {
   public:
-    VoxelGridDownsampling(float leaf_size);
-    std::vector<Point> downsample(const std::vector<Point> &input_cloud);
+    explicit VoxelGridDownsampling(float leaf_size_x, float leaf_size_y, float leaf_size_z);
+    std::vector<Point> downsample(const std::vector<Point> &input_cloud, bool apply_averaging = false);
 
   private:
-    float leaf_size_;
-    float inv_leaf_size_;
+    float inv_leaf_size_x_;
+    float inv_leaf_size_y_;
+    float inv_leaf_size_z_;
 };
 
 } // namespace downsampling
