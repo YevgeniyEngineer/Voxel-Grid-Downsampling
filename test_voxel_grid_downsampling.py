@@ -59,7 +59,7 @@ ax1.scatter(
     c="r",
     marker="o",
 )
-ax1.set_title("Point Cloud")
+ax1.set_title(f"Point Cloud {len(input_cloud_list)} Points")
 ax1.set_xlabel("X")
 ax1.set_ylabel("Y")
 ax1.set_zlabel("Z")
@@ -73,7 +73,7 @@ ax2.scatter(
     c="b",
     marker="^",
 )
-ax2.set_title("Downsampled Point Cloud")
+ax2.set_title(f"Downsampled Point Cloud {len(output_cloud_list)} Points")
 ax2.set_xlabel("X")
 ax2.set_ylabel("Y")
 ax2.set_zlabel("Z")
